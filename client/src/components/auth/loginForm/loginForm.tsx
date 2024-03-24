@@ -59,7 +59,7 @@ const LoginForm = () => {
       try {
         setLoading(true);
         setErrors(initialForms);
-        const res = await fetch(BACKEND_URL + "/auth/login", {
+        const res = await fetch("/api/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
