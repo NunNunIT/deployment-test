@@ -8,7 +8,6 @@ import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 
 const PORT = 8080;
-const __dirname = path.resolve()
 
 dotenv.config();
 
@@ -21,10 +20,6 @@ mongoose.connect(process.env.MONGO)
     })
 
 const app = express();
-app.use(express.static(path.join(__dirname, '/client/dist')))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', '/src/app/page.tsx'))
-})
 
 app.use(cors());
 app.use(express.json())
