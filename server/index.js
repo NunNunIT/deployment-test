@@ -6,6 +6,7 @@ import path from 'path';
 
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
+import productListRoutes from './routes/productList.route.js';
 
 const PORT = 8080;
 const __dirname = path.resolve()
@@ -21,10 +22,6 @@ mongoose.connect(process.env.MONGO)
     })
 
 const app = express();
-app.use(express.static(path.join(__dirname, '/client/dist')))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', '/src/app/page.tsx'))
-})
 
 app.use(cors());
 app.use(express.json())
@@ -35,6 +32,7 @@ app.listen(PORT, () => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/productList', productListRoutes);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

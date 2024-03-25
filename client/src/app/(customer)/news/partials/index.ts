@@ -1,1 +1,0 @@
-export {default as ArticleSummary} from "./article-summary"
