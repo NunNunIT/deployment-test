@@ -9,7 +9,6 @@ import authRoutes from './routes/auth.route.js';
 import productListRoutes from './routes/productList.route.js';
 
 const PORT = 8080;
-const __dirname = path.resolve()
 
 dotenv.config();
 
