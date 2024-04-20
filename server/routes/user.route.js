@@ -1,8 +1,16 @@
 import express from 'express';
-import { test } from '../controllers/user.controller.js'
+import { edit, getInforUser, changePassword,  getUserByEmail, deleteUserByEmail } from '../controllers/user.controller.js'
+import { verifyAccessToken } from "../middleware/verifyUser.js"
 
 const router = express.Router();
 
-router.get('/', test)
+// 2 api này chỉ dùng để test edit và change resetPassword. không sử dụng trong thực tế
+router.get("/get-user", getUserByEmail);
+router.delete("/delete", deleteUserByEmail);
+
+//api được sử dụng
+router.post("/getInfo", verifyAccessToken, getInforUser);
+router.put("/edit", verifyAccessToken, edit);
+router.put("/change-password", verifyAccessToken, changePassword);
 
 export default router;
